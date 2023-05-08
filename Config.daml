@@ -1,0 +1,47 @@
+﻿<ArcGIS defaultAssembly="PAMChatGPT.dll" defaultNamespace="PAMChatGPT" xmlns="http://schemas.esri.com/DADF/Registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///C:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd">
+  <AddInInfo id="{4e688f6f-f9ca-4e1a-8f6c-4e0c9c874631}" version="1.0" desktopVersion="3.1.41833">
+    <Name>PAMChatGPT</Name>
+    <Description>Ask ChatGPT</Description>
+    <Image>Images\AddinDesktop32.png</Image>
+    <Author>nicogis</Author>
+    <Company>Studio A&amp;T s.r.l.</Company>
+    <Date>13/03/2023</Date>
+    <Subject>Framework</Subject>
+    <!-- Note subject can be one or more of these topics:
+                    Content, Framework, Editing, Geodatabase, Geometry, Geoprocessing, Layouts, Map Authoring, Map Exploration -->
+  </AddInInfo>
+  <modules>
+    <insertModule id="PAMChatGPT_Module" className="ModuleChatGPT" autoLoad="false" caption="Module1">
+      <!-- uncomment to have the control hosted on a separate tab-->
+      <groups>
+        <!-- comment this out if you have no controls on the Addin tab to avoid
+              an empty group-->
+        <group id="PAMChatGPT_GroupChatGPT" caption="ChatGPT" keytip="CHS" appearsOnAddInTab="true">
+          <button refID="Dockpane_ChatGPTDockpane_ShowButton" size="large" />
+        </group>
+      </groups>
+      
+      <controls>
+        
+        <button id="Dockpane_ChatGPTDockpane_ShowButton" keytip="CH" caption="Ask ChatGPT" className="ChatGPTDockpane_ShowButton" loadOnClick="true" smallImage="Images\ChatGPT16.png" largeImage="Images\ChatGPT32.png">
+          <tooltip heading="ChatGPT">
+			  Ask ChatGPT which interacts in a conversational way<disabledText />
+		  </tooltip>
+        </button>
+      </controls>
+      <dockPanes>
+        <dockPane id="Dockpane_ChatGPTDockpane" caption="Ask ChatGPT" className="ChatGPTDockpaneViewModel" dock="group" dockWith="esri_core_contentsDockPane">
+          <content className="ChatGPTDockpaneView" />
+        </dockPane>
+      </dockPanes>
+    </insertModule>
+  </modules>
+  <propertySheets>
+	  
+    <updateSheet refID="esri_core_optionsPropertySheet">
+      <insertPage id="esri_sdk_PropertyPageAppSettings" caption="ChatGPT" className="ApplicationSettingsViewModel" group="Application">
+        <content className="ApplicationSettingsView" />
+      </insertPage>
+    </updateSheet>
+  </propertySheets>
+</ArcGIS>
