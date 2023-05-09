@@ -1,6 +1,6 @@
 ﻿<ArcGIS defaultAssembly="PAMChatGPT.dll" defaultNamespace="PAMChatGPT" xmlns="http://schemas.esri.com/DADF/Registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///C:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd">
-  <AddInInfo id="{4e688f6f-f9ca-4e1a-8f6c-4e0c9c874631}" version="1.0" desktopVersion="3.1.41833">
-    <Name>PAMChatGPT</Name>
+  <AddInInfo id="{4e688f6f-f9ca-4e1a-8f6c-4e0c9c874631}" version="1.0.0" desktopVersion="3.1.41833">
+    <Name>ChatGPT</Name>
     <Description>Ask ChatGPT</Description>
     <Image>Images\AddinDesktop32.png</Image>
     <Author>nicogis</Author>
@@ -39,7 +39,7 @@
   <propertySheets>
 	  
     <updateSheet refID="esri_core_optionsPropertySheet">
-      <insertPage id="esri_sdk_PropertyPageAppSettings" caption="ChatGPT" className="ApplicationSettingsViewModel" group="Application">
+      <insertPage id="esri_sdk_PropertyPageAppSettings_PAMChatGPT" caption="ChatGPT" className="ApplicationSettingsViewModel" group="Application">
         <content className="ApplicationSettingsView" />
       </insertPage>
     </updateSheet>

@@ -13,9 +13,6 @@ namespace PAMChatGPT
 {
     public class Bot
     {
-
-        private OpenAIAPI api;
-
         private Conversation chat = null;
 
         public ObservableCollection<Message> Messages { get; } = new ObservableCollection<Message>();
