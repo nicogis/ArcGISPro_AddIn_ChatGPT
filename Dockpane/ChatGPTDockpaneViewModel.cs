@@ -46,6 +46,9 @@ namespace PAMChatGPT
             try
             {
                 await ModuleChatGPT.Bot.SendActivityAsync(InputText);
+
+                InputText = null;
+
             }
             finally
             {
@@ -53,8 +56,7 @@ namespace PAMChatGPT
             }
         }
 
-        private bool SendMessageCanExecute() => !string.IsNullOrEmpty(InputText) && !string.IsNullOrWhiteSpace(InputText) 
-            && !IsSendingMessage;
+        private bool SendMessageCanExecute() => !string.IsNullOrWhiteSpace(InputText) && !IsSendingMessage;
 
 
         private RelayCommand clearAllCommand;
