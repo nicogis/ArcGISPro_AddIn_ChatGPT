@@ -1,6 +1,7 @@
 ﻿using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Contracts;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 
 namespace PAMChatGPT
 {
@@ -101,7 +102,7 @@ namespace PAMChatGPT
                         l = $"{l} ";
                     }
 
-                    s = $"```{l}{InputText}```";
+                    s = $"```{l}\r\n{Regex.Replace(InputText, @"^(?:[\t ]*(?:\r?\n|\r))+", "", RegexOptions.Multiline)}\r\n```";
 
                     await ModuleChatGPT.Bot.SendActivityAsync(s, MessageFrom.UserCode, SelectedQuestion);
                 }

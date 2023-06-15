@@ -30,7 +30,7 @@
     <Content Include="Images\ChatGPT32.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MdXaml" Version="1.18.1" />
+    <PackageReference Include="MdXaml" Version="1.19.2" />
     <PackageReference Include="OpenAI" Version="1.7.2" />
   </ItemGroup>
   <ItemGroup>

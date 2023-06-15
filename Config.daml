@@ -1,11 +1,11 @@
 ﻿<ArcGIS defaultAssembly="PAMChatGPT.dll" defaultNamespace="PAMChatGPT" xmlns="http://schemas.esri.com/DADF/Registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///C:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd">
-  <AddInInfo id="{4e688f6f-f9ca-4e1a-8f6c-4e0c9c874631}" version="1.0.0" desktopVersion="3.1.41833">
+  <AddInInfo id="{4e688f6f-f9ca-4e1a-8f6c-4e0c9c874631}" version="1.1.0" desktopVersion="3.1.41833">
     <Name>ChatGPT</Name>
     <Description>Ask ChatGPT</Description>
     <Image>Images\AddinDesktop32.png</Image>
     <Author>nicogis</Author>
     <Company>Studio A&amp;T s.r.l.</Company>
-    <Date>13/03/2023</Date>
+    <Date>15/06/2023</Date>
     <Subject>Framework</Subject>
     <!-- Note subject can be one or more of these topics:
                     Content, Framework, Editing, Geodatabase, Geometry, Geoprocessing, Layouts, Map Authoring, Map Exploration -->

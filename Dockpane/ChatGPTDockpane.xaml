@@ -36,6 +36,7 @@
                             </Grid.RowDefinitions>
 
                             <mdxam:MarkdownScrollViewer
+                            xml:space="preserve"
                             VerticalAlignment="Stretch"
                             HorizontalAlignment="Stretch"
                             Markdown="{Binding Result, UpdateSourceTrigger=PropertyChanged, IsAsync=True}"/>
