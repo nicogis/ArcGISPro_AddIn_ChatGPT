@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
+using PAMChatGPT.Extensions;
 namespace PAMChatGPT
 {
     public class Message : INotifyPropertyChanged
@@ -27,13 +27,13 @@ namespace PAMChatGPT
                 {
                     c = "blue";
                 }
-                else if (MessageFrom == MessageFrom.User)
+                else if ((MessageFrom == MessageFrom.User) || (MessageFrom == MessageFrom.UserCode) || (MessageFrom == MessageFrom.Assistant) || (MessageFrom == MessageFrom.AssistantCode))
                 {
                     c = "green";
                 }
                 
                 
-                return $"%{{color:{c}}}***{MessageFrom}***%: {Text}"; 
+                return $"%{{color:{c}}}***{MessageFrom.GetDescription<MessageFrom>()}***%: {Text}"; 
             
             }
                     
@@ -49,8 +49,17 @@ namespace PAMChatGPT
 
     public enum MessageFrom
     {
+        [Description("User")]
         User,
+        [Description("Bot")]
         Bot,
-        System
+        [Description("System")]
+        System,
+        [Description("Assistant")]
+        Assistant,
+        [Description("User (code)")]
+        UserCode,
+        [Description("Assistant (code)")]
+        AssistantCode
     }
 }

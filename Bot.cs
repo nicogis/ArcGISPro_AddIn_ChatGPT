@@ -60,18 +60,29 @@ namespace PAMChatGPT
         }
 
 
-        public async Task SendActivityAsync(string text)
+        public async Task SendActivityAsync(string text, MessageFrom messageFrom = MessageFrom.User, string assistantText = null)
         {
             try
             {
                 CreateConversationIfNotExistAsync();
 
+                if (!string.IsNullOrWhiteSpace(assistantText))
+                {
+                    Messages.Add(new Message
+                    {
+                        MessageFrom = MessageFrom.Assistant,
+                        Text = assistantText,
+                    });
+
+                    chat.AppendUserInput(assistantText);
+                }
+
                 Messages.Add(new Message
                 {
-                    MessageFrom = MessageFrom.User,
+                    MessageFrom = messageFrom,
                     Text = text,
                 });
-
+                
                 chat.AppendUserInput(text);
                 string response = await chat.GetResponseFromChatbotAsync();
 

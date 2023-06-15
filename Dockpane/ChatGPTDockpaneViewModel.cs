@@ -20,6 +20,53 @@ namespace PAMChatGPT
             }
         }
 
+
+        
+
+        private bool codeChecked;
+        public bool CodeChecked
+        {
+            get { return codeChecked; }
+            set
+            {
+                SetProperty(ref codeChecked, value, () => CodeChecked);                    
+            }
+        }
+
+        private string inputCodeLanguage;
+        public string InputCodeLanguage
+        {
+            get { return inputCodeLanguage; }
+            set
+            {
+                SetProperty(ref inputCodeLanguage, value, () => InputCodeLanguage);
+
+            }
+        }
+
+        private ObservableCollection<string> questions;
+        public ObservableCollection<string> Questions
+        {
+            get { return questions; }
+            set
+            {
+                SetProperty(ref questions, value, () => Questions);
+                    
+            }
+        }
+
+
+        private string selectedQuestion;
+        public string SelectedQuestion
+        {
+            get { return selectedQuestion; }
+            set
+            {
+                SetProperty(ref selectedQuestion, value, () => SelectedQuestion);
+                    
+            }
+        }
+
         private bool isSendingMessage;
 
         private bool IsSendingMessage
@@ -44,8 +91,24 @@ namespace PAMChatGPT
         {
             IsSendingMessage = true;
             try
-            {
-                await ModuleChatGPT.Bot.SendActivityAsync(InputText);
+            {               
+                if (this.CodeChecked)
+                {
+                    string s = InputText;
+                    string l = this.InputCodeLanguage;
+                    if (!string.IsNullOrWhiteSpace(l))
+                    {
+                        l = $"{l} ";
+                    }
+
+                    s = $"```{l}{InputText}```";
+
+                    await ModuleChatGPT.Bot.SendActivityAsync(s, MessageFrom.UserCode, SelectedQuestion);
+                }
+                else
+                {
+                    await ModuleChatGPT.Bot.SendActivityAsync(InputText);
+                }
 
                 InputText = null;
 
@@ -74,6 +137,21 @@ namespace PAMChatGPT
         public ChatGPTDockpaneViewModel()
         {
             Messages = new ReadOnlyObservableCollection<Message>(ModuleChatGPT.Bot.Messages);
+            Questions = new ObservableCollection<string>() {
+                "Clean up this code",
+                "Comment this code",
+                "Demonstrate how to use this code",
+                "Explain this code",
+                "Find & fix bugs",
+                "Is threadsafe",
+                "Is this well-written",
+                "Make this run faster"
+            };
+
+            SelectedQuestion = Questions[3];
+            InputCodeLanguage = "python";
+
+
         }
 
 
