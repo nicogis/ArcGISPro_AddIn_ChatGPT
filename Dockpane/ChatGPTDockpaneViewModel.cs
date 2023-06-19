@@ -45,6 +45,19 @@ namespace PAMChatGPT
             }
         }
 
+        private string questionUser;
+        public string QuestionUser
+        {
+            get { return questionUser; }
+            set
+            {
+                SetProperty(ref questionUser, value, () => QuestionUser);
+
+            }
+        }
+
+
+
         private ObservableCollection<string> questions;
         public ObservableCollection<string> Questions
         {
@@ -95,16 +108,7 @@ namespace PAMChatGPT
             {               
                 if (this.CodeChecked)
                 {
-                    string s = InputText;
-                    string l = this.InputCodeLanguage;
-                    if (!string.IsNullOrWhiteSpace(l))
-                    {
-                        l = $"{l} ";
-                    }
-
-                    s = $"```{l}\r\n{Regex.Replace(InputText, @"^(?:[\t ]*(?:\r?\n|\r))+", "", RegexOptions.Multiline)}\r\n```";
-
-                    await ModuleChatGPT.Bot.SendActivityAsync(s, MessageFrom.UserCode, SelectedQuestion);
+                    await ModuleChatGPT.Bot.SendActivityAsync($"```{this.InputCodeLanguage}\r\n{InputText}\r\n```", MessageFrom.UserCode, SelectedQuestion, QuestionUser);
                 }
                 else
                 {
@@ -146,7 +150,12 @@ namespace PAMChatGPT
                 "Find & fix bugs",
                 "Is threadsafe",
                 "Is this well-written",
-                "Make this run faster"
+                "Make this run faster",
+                "Translate the following code to ...",
+                "Write a .NET regular expression to ...",
+                "Rewrite using ...",
+                "Rewrite this code to use the ... library instead of the ... library.",
+                "General question about coding ..."
             };
 
             SelectedQuestion = Questions[3];

@@ -1,5 +1,4 @@
 ﻿using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace PAMChatGPT
 {
@@ -15,23 +14,19 @@ namespace PAMChatGPT
         }
 
         private ChatGPTDockpaneViewModel ViewModel => (ChatGPTDockpaneViewModel)DataContext;
-        
 
-        private void TextBoxInput_PreviewKeyDown(object sender, KeyEventArgs e)
+        private void cmbQuestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            string text = e.AddedItems[0] as string;
+            if (text.Contains("..."))
             {
-                if (ViewModel.SendMessageCommand.CanExecute(null))
-                {
-                    ViewModel.SendMessageCommand.Execute(null);
-                }
+                txtQuestion.Text = text;
+            }
+            else
+            {
+                txtQuestion.Text = null;
+
             }
         }
-
-        //private void Window_Closed(object sender, EventArgs e)
-        //{
-        //    ViewModel.Closed();
-        //}
-
     }
 }

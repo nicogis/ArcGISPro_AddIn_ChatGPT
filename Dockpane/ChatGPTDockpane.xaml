@@ -56,7 +56,7 @@
                     <RowDefinition Height="*" />
 
                 </Grid.RowDefinitions>
-                <TextBox Grid.Row="0" PreviewKeyDown="TextBoxInput_PreviewKeyDown"  TextWrapping="Wrap"
+                <TextBox Grid.Row="0" TextWrapping="Wrap"
                      AcceptsReturn="True"
                      VerticalScrollBarVisibility="Visible" 
                      BorderBrush="{DynamicResource Esri_Blue}"
@@ -73,12 +73,12 @@
                 Margin="98,0,14,0"
                 Command="{Binding ClearAllCommand}"
                 Content="Clear all" />
-                <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="0,5">
+                <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,5">
                     <CheckBox x:Name="chkCode" VerticalAlignment="Center" Margin="0,0,7,0" IsChecked="{Binding CodeChecked}">Code</CheckBox>
-                    <TextBox  x:Name="cmbLanguage"  Width="70" Text="{Binding InputCodeLanguage}" ToolTip="Language" Margin="0,0,7,0"/>
+                    <TextBox  x:Name="txtLanguage"  Width="70" Text="{Binding InputCodeLanguage}" ToolTip="Language" Margin="0,0,7,0"/>
 
-                    <ComboBox x:Name="cmbQuestion" Width="200" ItemsSource="{Binding Questions}" SelectedValue="{Binding SelectedQuestion}" IsEditable="False"/>
-
+                    <ComboBox x:Name="cmbQuestion" Width="200" ItemsSource="{Binding Questions}" SelectedValue="{Binding SelectedQuestion}" SelectionChanged="cmbQuestion_SelectionChanged" IsEditable="False"/>
+                    <TextBox x:Name="txtQuestion"  Width="350" Text="{Binding QuestionUser, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTip="Question user" Margin="7,0,0,0"></TextBox>
 
                 </StackPanel>
             </Grid>

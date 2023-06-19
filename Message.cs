@@ -27,13 +27,13 @@ namespace PAMChatGPT
                 {
                     c = "blue";
                 }
-                else if ((MessageFrom == MessageFrom.User) || (MessageFrom == MessageFrom.UserCode) || (MessageFrom == MessageFrom.Assistant) || (MessageFrom == MessageFrom.AssistantCode))
+                else if ((MessageFrom == MessageFrom.User) || (MessageFrom == MessageFrom.UserCode) || (MessageFrom == MessageFrom.AssistantCode))
                 {
                     c = "green";
                 }
                 
                 
-                return $"%{{color:{c}}}***{MessageFrom.GetDescription<MessageFrom>()}***%: {Text}"; 
+                return $"%{{color:{c}}}***{MessageFrom.GetDescription<MessageFrom>()}***%:\r\n{Text}"; 
             
             }
                     
@@ -55,8 +55,6 @@ namespace PAMChatGPT
         Bot,
         [Description("System")]
         System,
-        [Description("Assistant")]
-        Assistant,
         [Description("User (code)")]
         UserCode,
         [Description("Assistant (code)")]

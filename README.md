@@ -24,3 +24,5 @@ Open AddIn button and use it:
 ![Addin ArcGIS Pro ChatGPT](/Help/ShowChatGPT.png)
 
 ![Addin ArcGIS Pro ChatGPT](/Help/ShowChatGPTCode.png)
+
+![Addin ArcGIS Pro ChatGPT](/Help/ShowChatGPTCodeUser.png)

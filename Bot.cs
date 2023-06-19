@@ -1,4 +1,5 @@
 ﻿using ArcGIS.Desktop.Framework.Dialogs;
+using ArcGIS.Desktop.Internal.Catalog.PropertyPages.NetworkDataset;
 using OpenAI_API;
 using OpenAI_API.Chat;
 using PAMChatGPT.Enums;
@@ -60,17 +61,26 @@ namespace PAMChatGPT
         }
 
 
-        public async Task SendActivityAsync(string text, MessageFrom messageFrom = MessageFrom.User, string assistantText = null)
+        public async Task SendActivityAsync(string text, MessageFrom messageFrom = MessageFrom.User, string assistantText = null, string userText = null)
         {
             try
             {
                 CreateConversationIfNotExistAsync();
-
-                if (!string.IsNullOrWhiteSpace(assistantText))
+                if (!string.IsNullOrWhiteSpace(userText))
                 {
                     Messages.Add(new Message
                     {
-                        MessageFrom = MessageFrom.Assistant,
+                        MessageFrom = MessageFrom.UserCode,
+                        Text = userText,
+                    });
+
+                    chat.AppendUserInput(userText);
+                }
+                else if (!string.IsNullOrWhiteSpace(assistantText))
+                {
+                    Messages.Add(new Message
+                    {
+                        MessageFrom = MessageFrom.AssistantCode,
                         Text = assistantText,
                     });
 
