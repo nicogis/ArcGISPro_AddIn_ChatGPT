@@ -152,7 +152,7 @@ namespace PAMChatGPT
 
                 if (string.IsNullOrWhiteSpace(modelName))
                 {
-                    modelName = OpenAI_API.Models.Model.DefaultModel.ModelID;
+                    modelName = OpenAI_API.Models.Model.ChatGPTTurbo;
                 }
                 chat.Model = new OpenAI_API.Models.Model(modelName);
             }

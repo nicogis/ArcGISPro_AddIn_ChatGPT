@@ -317,23 +317,28 @@ namespace PAMChatGPT
             openAI_Organization = settings.OpenAI_Organization;
 
 
+
+
+
+            // https://platform.openai.com/docs/models/how-we-use-your-data 
+            // /v1/chat/completions
+
             models = new ObservableCollection<Model>
             {
-                OpenAI_API.Models.Model.DefaultModel,
-                OpenAI_API.Models.Model.AdaText,
-                OpenAI_API.Models.Model.BabbageText,
                 OpenAI_API.Models.Model.ChatGPTTurbo,
-                OpenAI_API.Models.Model.ChatGPTTurbo0301,
-                OpenAI_API.Models.Model.CurieText,
-                OpenAI_API.Models.Model.CushmanCode,
-                OpenAI_API.Models.Model.DavinciCode,
+                PAMChatGPT.Models.GPT3_5_0613,
+                PAMChatGPT.Models.GPT3_5_16k,
+                PAMChatGPT.Models.GPT3_5_16k_0613,
+                PAMChatGPT.Models.GPT4_0613,
+                PAMChatGPT.Models.GPT4_32k_0613,
                 OpenAI_API.Models.Model.GPT4,
                 OpenAI_API.Models.Model.GPT4_32k_Context,
-                OpenAI_API.Models.Model.TextModerationLatest,
-                OpenAI_API.Models.Model.TextModerationStable
+                OpenAI_API.Models.Model.ChatGPTTurbo0301
+                
+
             };
 
-            selectedModel = OpenAI_API.Models.Model.DefaultModel;
+            selectedModel = OpenAI_API.Models.Model.ChatGPTTurbo;
             if (!string.IsNullOrWhiteSpace(settings.OpenAI_Model))
             {
                 foreach (var m in models)
