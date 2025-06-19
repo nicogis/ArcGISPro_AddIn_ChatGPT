@@ -1,7 +1,7 @@
 # Addin ChatGPT ArcGIS Pro 3.1
 
 Call ChatGTP from ArcGIS Pro (this is a basic implementation)
-Now with ArcGIS Pro 3.5, it is recommended to develop ArcGIS Pro AI Assistants (beta) so that they can be integrated with ArcGIS Pro ![Custom Agents](https://mediaspace.esri.com/media/t/1_2bwwwu53)
+Now with ArcGIS Pro 3.5, it is recommended to develop ArcGIS Pro AI Assistants (beta) so that they can be integrated with ArcGIS Pro [Custom Agents](https://mediaspace.esri.com/media/t/1_2bwwwu53)
 
 Set in ArcGIS Pro Options -> **ChatGPT** before using it
 
